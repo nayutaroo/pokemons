@@ -1,3 +1,4 @@
 {
-  "pokemonsAppTitle": "ポケモン図鑑"
+  "pokemonsHomePageTitle": "ポケモン図鑑",
+  "errorImageText": "画像が見つかりませんでした"
 }

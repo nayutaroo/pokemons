@@ -1,4 +1,4 @@
-import 'package:pokemons/model/Pokemon.dart';
+import 'package:pokemons/model/pokemon.dart';
 
 import '../api/PokeAPI.dart';
 

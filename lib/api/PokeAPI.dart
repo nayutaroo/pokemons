@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../model/Pokemon.dart';
-import '../model/PokemonSummary.dart';
+import '../model/pokemon.dart';
+import '../model/pokemon_summary.dart';
 
 class PokeAPI {
   Future<List<PokemonSummary>> getPokemonList(int? offset) async {
