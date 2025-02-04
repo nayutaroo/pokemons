@@ -40,7 +40,7 @@ final class HomePage extends HookConsumerWidget {
                 itemBuilder: (context, index) {
                   final pokemon = pokemonState.pokemons.safeGet(index);
                   if (pokemon != null) {
-                    Card(
+                    return Card(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
