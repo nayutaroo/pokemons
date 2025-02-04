@@ -1,10 +1,10 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../model/pokemon.dart';
-import '../model/pokemon_summary.dart';
+import 'package:pokemons/model/pokemon.dart';
+import 'package:pokemons/model/pokemon_summary.dart';
 
-class PokeAPI {
+final class PokeAPI {
   Future<List<PokemonSummary>> getPokemonList(int? offset) async {
     final response = await http.get(Uri.parse('https://pokeapi.co/api/v2/pokemon?offset=$offset&limit=21'));
 
