@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pokemons/provider/PokemonProvider.dart';
+import 'package:pokemons/extension/safe_list.dart';
+import 'package:pokemons/foundation/hooks/l10n.dart';
+import 'package:pokemons/provider/pokemoon_provider.dart';
 
-class PokemonGrid extends HookConsumerWidget {
-  const PokemonGrid({Key? key}) : super(key: key);
+class HomePage extends HookConsumerWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = useL10n();
     final pokemonState = ref.watch(pokemonProvider);
 
     final ScrollController scrollController = ScrollController();
@@ -19,7 +22,7 @@ class PokemonGrid extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ポケモンリスト'),
+        title: Text(l10n.pokemonsHomePageTitle),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Padding(
@@ -35,23 +38,25 @@ class PokemonGrid extends HookConsumerWidget {
                 ),
                 itemCount: pokemonState.pokemons.length,
                 itemBuilder: (context, index) {
-                  final pokemon = pokemonState.pokemons[index];
-                  return Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.network(
-                          pokemon.imageUrl,
-                          height: 100,
-                          width: 100,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Center(child: Text('画像が見つかりません'));
-                          },
-                        ),
-                      ],
-                    ),
-                  );
+                  final pokemon = pokemonState.pokemons.safeGet(index);
+                  if (pokemon != null) {
+                    Card(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            pokemon.imageUrl,
+                            height: 100,
+                            width: 100,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Center(child: Text(l10n.errorImageText));
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                 },
               ),
             ),

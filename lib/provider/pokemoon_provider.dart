@@ -1,8 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../api/PokeAPI.dart';
-import '../model/Pokemon.dart';
-import '../usecase/PokemonListUseCase.dart';
+import '../model/pokemon.dart';
+import '../usecase/pokemon_list_usecase.dart';
 
 class PokemonState {
   final List<Pokemon> pokemons;
