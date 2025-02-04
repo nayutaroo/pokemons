@@ -4,7 +4,7 @@ import 'package:pokemons/extension/safe_list.dart';
 import 'package:pokemons/foundation/hooks/l10n.dart';
 import 'package:pokemons/provider/pokemoon_provider.dart';
 
-class HomePage extends HookConsumerWidget {
+final class HomePage extends HookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override

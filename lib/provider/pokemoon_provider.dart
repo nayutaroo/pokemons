@@ -1,17 +1,16 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokemons/api/PokeAPI.dart';
+import 'package:pokemons/model/pokemon.dart';
+import 'package:pokemons/usecase/pokemon_list_usecase.dart';
 
-import '../api/PokeAPI.dart';
-import '../model/pokemon.dart';
-import '../usecase/pokemon_list_usecase.dart';
-
-class PokemonState {
+final class PokemonState {
   final List<Pokemon> pokemons;
   final bool isLoading;
 
   PokemonState({required this.pokemons, required this.isLoading});
 }
 
-class PokemonNotifier extends StateNotifier<PokemonState>{
+final class PokemonNotifier extends StateNotifier<PokemonState>{
   PokemonNotifier() : super(PokemonState(pokemons: [], isLoading: false));
 
   void loadPokemons() {
