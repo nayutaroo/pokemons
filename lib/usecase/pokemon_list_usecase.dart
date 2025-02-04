@@ -1,6 +1,5 @@
+import 'package:pokemons/api/PokeAPI.dart';
 import 'package:pokemons/model/pokemon.dart';
-
-import '../api/PokeAPI.dart';
 
 final class PokemonUseCase {
   const PokemonUseCase(this._pokeAPI);
