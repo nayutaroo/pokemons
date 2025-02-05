@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokemons/extension/safe_list.dart';
 import 'package:pokemons/foundation/hooks/router.dart';
 import 'package:pokemons/foundation/hooks/l10n.dart';
+import 'package:pokemons/foundation/hooks/theme.dart';
 import 'package:pokemons/provider/pokemoon_provider.dart';
 import 'package:pokemons/router/app_router.dart';
 
@@ -15,6 +16,7 @@ final class HomePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = useL10n();
     final router = useRouter();
+    final theme = useTheme();
     final pokemonState = ref.watch(pokemonProvider);
 
     final ScrollController scrollController = ScrollController();
@@ -28,7 +30,7 @@ final class HomePage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.pokemonsHomePageTitle),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: theme.colorScheme.inversePrimary,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

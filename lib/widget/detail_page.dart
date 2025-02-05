@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokemons/foundation/hooks/l10n.dart';
+import 'package:pokemons/foundation/hooks/theme.dart';
 import 'package:pokemons/model/pokemon.dart';
 
 @RoutePage()
@@ -16,11 +17,12 @@ final class DetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = useL10n();
+    final theme = useTheme();
 
     return Scaffold(
       appBar: AppBar(
         title: Text(pokemon.name),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: theme.colorScheme.inversePrimary,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -41,7 +43,7 @@ final class DetailPage extends HookConsumerWidget {
             const SizedBox(height: 16.0),
             Text(
               pokemon.name, // ポケモンの説明テキスト
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: theme.textTheme.bodyMedium,
             ),
           ],
         ),
