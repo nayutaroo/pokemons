@@ -41,19 +41,24 @@ final class HomePage extends HookConsumerWidget {
                   final pokemon = pokemonState.pokemons.safeGet(index);
                   if (pokemon != null) {
                     return Card(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.network(
-                            pokemon.imageUrl,
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Center(child: Text(l10n.errorImageText));
-                            },
-                          ),
-                        ],
+                      child: InkWell(
+                        onTap: () {
+                          print("Tapped: ${pokemon.name}");
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.network(
+                              pokemon.imageUrl,
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Center(child: Text(l10n.errorImageText));
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }
